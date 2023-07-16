@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-const Demo2 = (): JSX.Element => {
+const Demo6 = (): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<THREE.WebGLRenderer>();
   const sceneRef = useRef<THREE.Scene>();
@@ -34,13 +34,40 @@ const Demo2 = (): JSX.Element => {
       // 将渲染器添加到页面中
       containerRef.current!.appendChild(renderer.domElement);
       // 添加一个立方体
-      const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
-      const cubeMaterial = new THREE.MeshBasicMaterial({
-        color: 0x00ff00,
-        wireframe: false,
-      });
-      const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-      scene.add(cube);
+      const cubeGeometry = new THREE.BoxGeometry(6, 6, 6);
+      // const cubeMaterial = new THREE.MeshBasicMaterial({
+      //   color: 0x00ff00,
+      //   wireframe: false,
+      // });
+      // const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+      // scene.add(cube);
+      // 创建一个纹理加载器 ===> 基础纹理
+      const textureLoader = new THREE.TextureLoader();
+      // // 加载纹理
+      textureLoader.load("../../../public/textures/stone.jpg", (texture) => {
+        // 创建一个材质
+        const material = new THREE.MeshLambertMaterial({ // 对光源有反应的，暗淡材质
+        // const material = new THREE.MeshPhongMaterial({
+          map: texture
+        });
+        const cube = new THREE.Mesh(cubeGeometry, material);
+        scene.add(cube);
+      })
+      // 凹凸纹理
+      textureLoader.load("../../../public/textures/stone.jpg", (texture) => {
+        textureLoader.load("../../../public/textures/stone-bump.jpg", (bump) => {
+          // 创建一个材质
+          const material = new THREE.MeshPhongMaterial({ // 对光源有反应的，明亮材质
+            map: texture,
+            bumpMap: bump,
+            bumpScale: 100
+          });
+          const cube = new THREE.Mesh(cubeGeometry, material);
+          cube.position.set(5, 0, 0);
+          scene.add(cube);
+          })
+      })
+      
 
       // 添加一个球体
       const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
@@ -50,21 +77,20 @@ const Demo2 = (): JSX.Element => {
       });
       const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
       sphere.position.set(5, 0, 0);
-      scene.add(sphere);
-
+      // scene.add(sphere);
       // 添加一个平面，用来接收阴影
       const planeGeometry = new THREE.PlaneGeometry(20, 30);
       const planeMaterial = new THREE.MeshLambertMaterial({
         color: 0xffffff,
       });
       const plane = new THREE.Mesh(planeGeometry, planeMaterial);
-      scene.add(plane);
+      // scene.add(plane);
       plane.rotateZ(20);
       plane.position.z = -10;
       plane.position.x = 3;
 
       // 让立方体和球体产生阴影
-      cube.castShadow = true;
+      // cube.castShadow = true;
       sphere.castShadow = true;
 
       // 让平面接收阴影
@@ -85,8 +111,8 @@ const Demo2 = (): JSX.Element => {
       scene.fog = new THREE.Fog(0xffffff, 1, 50);
 
       const animate = () => {
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
+        // cube.rotation.x += 0.01;
+        // cube.rotation.y += 0.01;
 
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
@@ -110,4 +136,4 @@ const Demo2 = (): JSX.Element => {
   );
 };
 
-export default Demo2;
+export default Demo6;
