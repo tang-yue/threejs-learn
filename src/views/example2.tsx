@@ -1,9 +1,10 @@
+/* eslint-disable */
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import Stats from "three/addons/libs/stats.module.js";
 import { GUI } from "three/addons/libs/lil-gui.module.min.js";
-import { initRenderer, initCamera, initControls, addGroundPlane } from "../utils/utils.js";
+import { initRenderer, initControls, addGroundPlane } from "../utils/utils.js";
 import { createMultiMaterialObject } from "../../node_modules/three/examples/jsm/utils/SceneUtils";
 
 let container: any;
@@ -75,7 +76,7 @@ function animate() {
   scene.traverse((e) => {
     if (e instanceof THREE.Group) {
       // console.log('animate')
-      e.rotation.x += 4;
+      e.rotation.x += 2;
       // e.rotation.x += params.rotationSpeed;
       e.rotation.y += params.rotationSpeed;
       console.log(e.rotation.y, '这里没有执行吗？')
@@ -97,10 +98,10 @@ function createCorps() {
 
   function setupControls() {
   // 要将下面这段代码改写成react版
-   params = new (function () {
+    params = new (function () {
       this.cameraNear = camera.near;
       this.cameraFar = camera.far;
-      this.rotationSpeed = 0.02;
+      this.rotationSpeed = 0.01;
       this.numberOfObjects = scene.children.length;
       this.color = 0x00ff00;
 

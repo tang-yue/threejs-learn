@@ -87,18 +87,18 @@ const Demo7 = (): JSX.Element => {
 
       // createNormalSprite();
       // 创建一个基础的粒子
-      function createNormalSprite() {
-        for (let i = -5; i < 5; i++) {
-          for (let j = -5; j < 5; j++) {
-            const spriteMaterial = new THREE.SpriteMaterial({
-              color: Math.random() * 0xffffff,
-            });
-            const sprite = new THREE.Sprite(spriteMaterial);
-            sprite.position.set(i * 2, j * 2, 0);
-            scene.add(sprite);
-          }
-        }
-      }
+      // function createNormalSprite() {
+      //   for (let i = 0; i < 5; i++) {
+      //     for (let j = 0; j < 5; j++) {
+      //       const spriteMaterial = new THREE.SpriteMaterial({
+      //         color: Math.random() * 0xffffff,
+      //       });
+      //       const sprite = new THREE.Sprite(spriteMaterial);
+      //       sprite.position.set(i * 5, j * 5, 0);
+      //       scene.add(sprite);
+      //     }
+      //   }
+      // }
       createParticleSystem();
       // 创建一个粒子系统函数
       function createParticleSystem() {

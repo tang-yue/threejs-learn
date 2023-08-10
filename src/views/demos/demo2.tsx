@@ -22,11 +22,9 @@ const Demo2 = (): JSX.Element => {
       // 设置相机的位置
       camera.position.set(0, 0, 20);
       cameraRef.current = camera;
-
       // 创建一个渲染器
       const renderer = new THREE.WebGLRenderer({ antialias: true });
       rendererRef.current = renderer;
-    
       // 设置渲染器输出的大小
       // const { clientWidth, clientHeight } = containerRef.current!;
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -62,14 +60,11 @@ const Demo2 = (): JSX.Element => {
       plane.rotateZ(20);
       plane.position.z = -10;
       plane.position.x = 3;
-
       // 让立方体和球体产生阴影
       cube.castShadow = true;
       sphere.castShadow = true;
-
       // 让平面接收阴影
       plane.receiveShadow = true;
-
       // 添加聚灯光
       const spotLight = new THREE.SpotLight(0xffffff);
       spotLight.position.set(-10, 10, 90);
@@ -80,14 +75,11 @@ const Demo2 = (): JSX.Element => {
 
       // 让渲染器支持阴影
       renderer.shadowMap.enabled = true;
-
       // 添加雾化效果
       scene.fog = new THREE.Fog(0xffffff, 1, 50);
-
       const animate = () => {
         cube.rotation.x += 0.01;
         cube.rotation.y += 0.01;
-
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
       };

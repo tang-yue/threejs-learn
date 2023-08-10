@@ -2,7 +2,6 @@ import React from 'react';
 import Home from '../views/home';
 import Example1 from '../views/example1';
 import Example2 from '../views/example2';
-// import Example3 from '../views/example3';
 import Demo1 from '../views/demos/demo1';
 import Demo2 from "../views/demos/demo2";
 import Demo3 from '../views/demos/demo3/demo3.tsx';
@@ -10,8 +9,6 @@ import Demo4 from "../views/demos/demo4/demo4.tsx";
 import Demo5 from '../views/demos/demo5/demo5.tsx';
 import Demo6 from '../views/demos/demo6/demo6.tsx';
 import Demo7 from '../views/demos/demo7/demo7.tsx';
-// import About from './components/About';
-// import Users from './components/Users';
 interface RouteConfig {
   path: string;
   component: React.ComponentType<any>;
@@ -25,7 +22,7 @@ const routes: RouteConfig[] = [
     exact: true
   },
   {
-    path: '/example1',
+    path: '/example1',  // 基本元素
     component: Example1
   },
   {
@@ -33,15 +30,11 @@ const routes: RouteConfig[] = [
     component: Example2
   },
   {
-    path: '/users',
-    component: Home
-  },
-  {
     path: '/demo1',
     component: Demo1
   },
   {
-    path: '/demo2',
+    path: '/demo2',   // 阴影效果/雾化效果
     component: Demo2
   },
   {
@@ -49,7 +42,7 @@ const routes: RouteConfig[] = [
     component: Demo3
   },
   {
-    path: '/demo4',   // 动画
+    path: '/demo4',   // 动画 加载外部文件
     component: Demo4
   },
   {

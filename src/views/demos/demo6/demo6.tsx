@@ -43,16 +43,16 @@ const Demo6 = (): JSX.Element => {
       // scene.add(cube);
       // 创建一个纹理加载器 ===> 基础纹理
       const textureLoader = new THREE.TextureLoader();
-      // // 加载纹理
-      textureLoader.load("../../../public/textures/stone.jpg", (texture) => {
-        // 创建一个材质
-        const material = new THREE.MeshLambertMaterial({ // 对光源有反应的，暗淡材质
-        // const material = new THREE.MeshPhongMaterial({
-          map: texture
-        });
-        const cube = new THREE.Mesh(cubeGeometry, material);
-        scene.add(cube);
-      })
+      // // // 加载纹理
+      // textureLoader.load("../../../public/textures/stone.jpg", (texture) => {
+      //   // 创建一个材质
+      //   const material = new THREE.MeshLambertMaterial({ // 对光源有反应的，暗淡材质
+      //   // const material = new THREE.MeshPhongMaterial({
+      //     map: texture
+      //   });
+      //   const cube = new THREE.Mesh(cubeGeometry, material);
+      //   scene.add(cube);
+      // })
       // 凹凸纹理
       textureLoader.load("../../../public/textures/stone.jpg", (texture) => {
         textureLoader.load("../../../public/textures/stone-bump.jpg", (bump) => {
@@ -60,7 +60,7 @@ const Demo6 = (): JSX.Element => {
           const material = new THREE.MeshPhongMaterial({ // 对光源有反应的，明亮材质
             map: texture,
             bumpMap: bump,
-            bumpScale: 100
+            bumpScale: 0.5
           });
           const cube = new THREE.Mesh(cubeGeometry, material);
           cube.position.set(5, 0, 0);
