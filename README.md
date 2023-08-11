@@ -1,5 +1,5 @@
 react + ts 实现的几个小demo
-# three.js
+# three.js 入门指南
 - [基础](#threejs-基础-简单实现一些阴影雾化的效果)
   - [什么是three.js](#一什么是threejs)
   - [渲染三维对象](#二渲染三维对象)
