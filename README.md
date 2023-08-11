@@ -1,3 +1,4 @@
+react + ts 实现的几个小demo
 # three.js
 - [基础](#threejs-基础-简单实现一些阴影雾化的效果)
   - [什么是three.js](#一什么是threejs)
@@ -706,3 +707,6 @@ function createParticleSystem() {
 }
 ```
 demo7 可看效果
+
+[参考项目: learning-threejs](https://github.com/josdirksen/learning-threejs)
+[参考项目: my-three](https://github.com/cshenger/my-three)
